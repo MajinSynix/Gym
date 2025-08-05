@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Menù Settimanale</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      max-width: 390px;
+      margin: 0 auto;
+    }
+
+    .header {
+      padding: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+      background-color: #3a15dd;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    .day-card {
+      background: #fff;
+      margin: 12px;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      cursor: pointer;
+    }
+
+    .day-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #3a15dd;
+      margin-bottom: 8px;
+    }
+
+    .meal-details {
+      display: none;
+      margin-top: 10px;
+      padding-left: 5px;
+    }
+
+    .meal {
+      margin-bottom: 10px;
+    }
+
+    .meal strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .meal p {
+      margin: 0;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 390px;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      background: #ffffff;
+      border-top: 1px solid #ddd;
+    }
+
+    .bottom-nav div {
+      font-size: 12px;
+      color: #999;
+      text-align: center;
+    }
+
+    .bottom-nav .active {
+      color: #3a15dd;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">Menù Settimanale</div>
+
+  <div id="menu-week"></div>
+
+  <div class="bottom-nav">
+    <div>Profilo</div>
+    <div>Promemoria</div>
+    <div class="active">Home</div>
+    <div>Chat</div>
+    <div>Notifiche</div>
+  </div>
+
+  <script>
+    const weekDays = [
+      { giorno: "Lunedì", pasti: {
+        colazione: "250ml di latte scremato</br>40g di cereali senza zucchero</br>10g di frutta secca",
+        pranzo: "150g di pane</br>120g di prosciutto magro</br>150g di verdura</br>10g olio o 20g mayo light",
+        cena: "200g di merluzzo</br>10g di parmigiano</br>30g di salsa barbecue zero</br>100g di pane o 250g di patate",
+        spuntini: "20g di Whey</br>10g di frutta secca"
+      }},
+      { giorno: "Martedì", pasti: {
+        colazione: "250ml di latte scremato</br>40g di cereali senza zucchero</br>10g di frutta secca",
+        pranzo: "100g di pasta o riso</br>25g di pesto light<br>50g di tonno al naturale<br>20g di parmigiano",
+        cena: "200g di merluzzo</br>10g di parmigiano</br>30g di salsa barbecue zero</br>100g di pane o 250g di patate",
+        spuntini: "20g di Whey</br>10g di frutta secca"
+      }},
+      { giorno: "Mercoledì", pasti: {
+        colazione: "250ml di latte scremato</br>40g di cereali senza zucchero</br>10g di frutta secca",
+        pranzo: "100g di pasta o riso</br>25g di pesto light<br>50g di tonno al naturale<br>20g di parmigiano",
+        cena: "250g di filetto di tonno</br>100g di pane o 250g di patate</br>150g di verdura</br>10g di olio o 20g di mayo light",
+        spuntini: "20g di Whey</br>10g di frutta secca"
+      }},
+      { giorno: "Giovedì", pasti: {
+        colazione: "250ml di latte scremato</br>40g di cereali senza zucchero</br>10g di frutta secca",
+        pranzo: "100g di pasta o riso</br>2 uova<br>50g di prosciutto a cubetti<br>20g di parmigiano",
+        cena: "200g di pollo o tacchino</br>100g di pane o 250g di patate</br>150g di verdura</br>10g di olio o 20g di mayo light",
+        spuntini: "20g di Whey</br>10g di frutta secca"
+      }},
+      { giorno: "Venerdì", pasti: {
+        colazione: "250ml di latte scremato</br>40g di cereali senza zucchero</br>10g di frutta secca",
+        pranzo: "100g di pasta o riso</br>2 uova<br>50g di prosciutto a cubetti<br>20g di parmigiano",
+        cena: "200g di pollo o tacchino</br>100g di pane o 250g di patate</br>150g di verdura</br>10g di olio o 20g di mayo light",
+        spuntini: "20g di Whey</br>10g di frutta secca"
+      }},
+      { giorno: "Sabato", pasti: {
+        colazione: "250ml di latte scremato</br>40g di cereali senza zucchero</br>10g di frutta secca",
+        pranzo: "pasta o riso",
+        cena: "Libero",
+        spuntini: "Niente"
+      }},
+      { giorno: "Domenica", pasti: {
+        colazione: "250ml di latte scremato</br>40g di cereali senza zucchero</br>10g di frutta secca",
+        pranzo: "pasta o riso",
+        cena: "Insalata di farro e legumi",
+        spuntini: "20g di Whey</br>10g di frutta secca"
+      }},
+    ];
+
+    const container = document.getElementById('menu-week');
+
+    weekDays.forEach((day, i) => {
+      const card = document.createElement('div');
+      card.className = 'day-card';
+
+      card.innerHTML = `
+        <div class="day-title">${day.giorno}</div>
+        <div class="meal-details">
+          <div class="meal"><strong>Colazione:</strong><p>${day.pasti.colazione}</p></div>
+          <div class="meal"><strong>Pranzo:</strong><p>${day.pasti.pranzo}</p></div>
+          <div class="meal"><strong>Cena:</strong><p>${day.pasti.cena}</p></div>
+          <div class="meal"><strong>Spuntini:</strong><p>${day.pasti.spuntini}</p></div>
+        </div>
+      `;
+
+      const title = card.querySelector('.day-title');
+      const details = card.querySelector('.meal-details');
+      title.addEventListener('click', () => {
+        const all = document.querySelectorAll('.meal-details');
+        all.forEach(el => { if (el !== details) el.style.display = 'none'; });
+        details.style.display = details.style.display === 'block' ? 'none' : 'block';
+      });
+
+      container.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>

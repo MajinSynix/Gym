@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Storico Pesi</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background: #f9f9f9;
+      max-width: 390px;
+      margin: 0 auto;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #3a15dd;
+    }
+    .header-left { display: flex; align-items: center; }
+    .header-left span { font-size: 22px; margin-right: 10px; }
+    .container { padding: 10px 15px; }
+    .day-history { margin-bottom: 20px; }
+    .day-history h2 {
+      font-size: 16px;
+      color: #3a15dd;
+      margin-bottom: 10px;
+    }
+    .exercise {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    }
+    .exercise-title {
+      font-weight: bold;
+      color: #3a15dd;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    table {
+      width: 100%;
+      border-spacing: 10px 8px;
+    }
+    table th {
+      text-align: left;
+      font-size: 13px;
+      color: #888;
+    }
+    table td {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <span><a href="Index.html">&lt;</a></span>
+      STORICO PESI
+    </div>
+  </header>
+
+  <div id="storico-container" class="container"></div>
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Storico Pesi</title>
+  <style>
+    body { font-family:'Helvetica Neue',sans-serif; background:#f9f9f9; margin:0 auto; max-width:390px; padding:1rem; }
+    h1 { color:#3a15dd; margin-bottom:1rem; border-bottom:1px solid #ddd; padding-bottom:.5rem; }
+    nav a { text-decoration:none; color:#3a15dd; font-weight:bold; margin-right:.5rem; }
+    .exercise-group { margin-bottom:1.5rem; }
+    .exercise-group h2 { color:#3a15dd; margin-bottom:.5rem; }
+    table { width:100%; border-spacing:8px 6px; background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
+    th { background:#f0f0f0; padding:8px; text-align:left; font-size:13px; color:#666; }
+    td { padding:8px; font-size:14px; color:#333; }
+  </style>
+</head>
+<body>
+
+  <nav><a href="Index.html">&lt; Home</a></nav>
+  <h1>Storico Pesi</h1>
+  <div id="storico-container"></div>
+
+  <script>
+    async function init() {
+      // carica il JSON fisico
+      const [handle] = await window.showOpenFilePicker({
+        multiple: false,
+        types: [{ description:'JSON', accept:{ 'application/json':['.json'] } }]
+      });
+      const file = await handle.getFile();
+      const text = await file.text();
+      const storico = JSON.parse(text || '[]');
+
+      // raggruppa per esercizio
+      const grouped = {};
+      storico.forEach(entry => {
+        entry.exercises.forEach(ex => {
+          if (!grouped[ex.title]) grouped[ex.title] = [];
+          grouped[ex.title].push({ date: entry.date, series: ex.series });
+        });
+      });
+
+      const container = document.getElementById('storico-container');
+      if (!Object.keys(grouped).length) {
+        container.innerHTML = '<p>Nessun storico disponibile.</p>';
+        return;
+      }
+
+      // render
+      for (const [title, records] of Object.entries(grouped)) {
+        const sec = document.createElement('div');
+        sec.className = 'exercise-group';
+        sec.innerHTML = `<h2>${title}</h2>
+          <table>
+            <thead><tr><th>Data</th><th>Serie #</th><th>Peso</th><th>Rip.</th></tr></thead>
+            <tbody></tbody>
+          </table>`;
+        const tbody = sec.querySelector('tbody');
+        records.forEach(rec => {
+          rec.series.forEach((s,i) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td>${rec.date}</td>
+              <td>${i+1}</td>
+              <td>${s.peso}</td>
+              <td>${s.reps}</td>`;
+            tbody.appendChild(tr);
+          });
+        });
+        container.appendChild(sec);
+      }
+    }
+
+    window.addEventListener('load', init);
+  </script>
+
+</body>
+</html>

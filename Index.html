@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>GYM</title>
+  <style>
+    /* Reset base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      max-width: 390px; /* iPhone 12 width */
+      margin: 0 auto;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(to right, #3a15dd, #00a651);
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    header img {
+      height: 32px;
+      margin-right: 10px;
+    }
+
+    header h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    .container {
+      padding: 15px;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .menu-item {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #222;
+      font-weight: 600;
+      font-size: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+      transition: background-color 0.2s ease;
+    }
+
+    .menu-item i {
+      font-size: 20px;
+      margin-right: 12px;
+    }
+
+    .menu-item:hover {
+      background-color: #f0f0f0;
+    }
+
+    .bottom-nav {
+      display: flex;
+      justify-content: space-around;
+      background-color: #fff;
+      padding: 8px 0;
+      border-top: 1px solid #ccc;
+    }
+
+    .bottom-nav a {
+      font-size: 13px;
+      color: #888;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .bottom-nav a.active {
+      color: #00a651;
+      font-weight: bold;
+    }
+
+    .bottom-nav i {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 2px;
+    }
+  </style>
+</head>
+
+<body> <!-- Qui bisogna mettere il contenuto della pagina -->
+
+  <header>
+    <h1>GYM</h1>
+  </header>
+
+  <div class="container">
+    <a class="menu-item" href="Workout.html"><i>🏋️</i> Allenamenti</a>
+    <a class="menu-item" href="StoricoPesi.html"><i>📈</i> Storico pesi</a>
+    <a class="menu-item" href="progressi.html"><i>🚀</i> Progressi</a>
+    <a class="menu-item" href="Nutrizione.html"><i>🥗</i> Nutrizione</a>
+    <a class="menu-item" href="acquisti.html"><i>🛒</i> Acquisti</a>
+  </div>
+
+</body>
+
+</html>

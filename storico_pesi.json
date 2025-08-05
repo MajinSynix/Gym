@@ -1,0 +1,144 @@
+[
+  {
+    "date": "2025-08-05",
+    "day": "Lunedì",
+    "exercises": [
+      {
+        "title": "Lat Machine presa supina",
+        "series": [
+          {
+            "peso": 8,
+            "reps": 3
+          },
+          {
+            "peso": 9,
+            "reps": 2
+          },
+          {
+            "peso": 10,
+            "reps": 1
+          }
+        ]
+      },
+      {
+        "title": "Pulley con triangolo",
+        "series": [
+          {
+            "peso": 1,
+            "reps": 2
+          },
+          {
+            "peso": 1,
+            "reps": 2
+          },
+          {
+            "peso": 1,
+            "reps": 2
+          }
+        ]
+      },
+      {
+        "title": "Pull Down",
+        "series": [
+          {
+            "peso": 0,
+            "reps": 0
+          },
+          {
+            "peso": 0,
+            "reps": 0
+          },
+          {
+            "peso": 0,
+            "reps": 0
+          }
+        ]
+      },
+      {
+        "title": "Chest press",
+        "series": [
+          {
+            "peso": 1,
+            "reps": 5
+          },
+          {
+            "peso": 1,
+            "reps": 2
+          },
+          {
+            "peso": 4,
+            "reps": 3
+          }
+        ]
+      },
+      {
+        "title": "Shoulder Press",
+        "series": [
+          {
+            "peso": 0,
+            "reps": 0
+          },
+          {
+            "peso": 0,
+            "reps": 0
+          },
+          {
+            "peso": 0,
+            "reps": 0
+          }
+        ]
+      },
+      {
+        "title": "Alzate laterali",
+        "series": [
+          {
+            "peso": 0,
+            "reps": 0
+          },
+          {
+            "peso": 0,
+            "reps": 0
+          },
+          {
+            "peso": 0,
+            "reps": 0
+          }
+        ]
+      },
+      {
+        "title": "Curl con manubri",
+        "series": [
+          {
+            "peso": 0,
+            "reps": 0
+          },
+          {
+            "peso": 0,
+            "reps": 0
+          },
+          {
+            "peso": 0,
+            "reps": 0
+          }
+        ]
+      },
+      {
+        "title": "Push down singolo",
+        "series": [
+          {
+            "peso": 0,
+            "reps": 0
+          },
+          {
+            "peso": 0,
+            "reps": 0
+          },
+          {
+            "peso": 0,
+            "reps": 0
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Lunedì</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      max-width: 390px;
+      margin: 0 auto;
+    }
+
+    .exercise {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      cursor: pointer;
+    }
+
+    .exercise-title {
+      font-weight: bold;
+      color: #3a15dd;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .exercise-details {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .row div {
+      flex: 1;
+    }
+
+    .tag {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      padding: 8px 12px;
+      border-radius: 25px;
+      border: 2px solid #3a15dd;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn.play {
+      background: #3a15dd;
+      color: white;
+    }
+
+    .btn.outline {
+      background: white;
+      color: #3a15dd;
+    }
+
+    .note {
+      font-weight: bold;
+      margin: 10px 0 4px;
+    }
+
+    .note-text {
+      font-size: 14px;
+      color: #444;
+    }
+
+    table {
+      width: 100%;
+      border-spacing: 10px 8px;
+    }
+
+    table th {
+      text-align: left;
+      font-size: 13px;
+      color: #888;
+    }
+
+    table input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .start-btn {
+      width: calc(100% - 24px);
+      margin: 12px;
+      background: #3a15dd;
+      color: white;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Esercizi -->
+  <div id="exercise-list">
+    <!-- Gli esercizi vengono generati dinamicamente -->
+  </div>
+
+  <script>
+    const exercises = [
+      { title: "Lat Machine presa supina", note: "2\" di isometria in basso", series: [0, 0, 0] },
+      { title: "Pulley con triangolo", note: "Fermarsi 1cm dal petto", series: [0, 0, 0] },
+      { title: "Pull Down", note: "Controllare la fase eccentrica", series: [0, 0, 0] },
+      { title: "Chest press", note: "Focus sul movimento scapolare", series: [0, 0, 0] },
+      { title: "Shoulder Press", note: "Non estendere troppo", series: [0, 0, 0] },
+      { title: "Alzate laterali", note: "Movimento lento in discesa", series: [0, 0, 0] },
+      { title: "Curl con manubri", note: "Tenere i gomiti stretti", series: [0, 0, 0] },
+      { title: "Push down singolo", note: "Schiena neutra sempre", series: [0, 0, 0] },
+    ];
+
+    const list = document.getElementById('exercise-list');
+
+    exercises.forEach((ex, index) => {
+      const exDiv = document.createElement('div');
+      exDiv.className = 'exercise';
+      exDiv.innerHTML = `
+        <div class="exercise-title">${String.fromCharCode(65 + index)}. ${ex.title}</div>
+        <div class="exercise-details">
+          <div class="row">
+            <div><div>🔁</div><div class="tag">3 Serie</div></div>
+            <div><div>🏋️</div><div class="tag">6/10 Rip.</div></div>
+            <div><div>⏳</div><div class="tag">90 sec</div></div>
+          </div>
+          <div class="btn-group">
+            <button class="btn outline" style="margin: auto;"> Storico pesi 📈</button>
+          </div>
+          <div class="note" style="margin-top: 12px auto;">Serie</div>
+          <table>
+            <thead>
+              <tr><th></th><th>Peso (Kg)</th><th>Ripetizioni</th></tr>
+            </thead>
+            <tbody>
+              ${ex.series.map((peso, i) => `
+                <tr>
+                  <td>${i + 1}</td>
+                  <td><input type="number" value="${peso}"></td>
+                  <td><input type="number" value="0"></td>
+                </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+      `;
+      list.appendChild(exDiv);
+
+      const title = exDiv.querySelector('.exercise-title');
+      const details = exDiv.querySelector('.exercise-details');
+      title.addEventListener('click', () => {
+        const allDetails = document.querySelectorAll('.exercise-details');
+        allDetails.forEach(d => {
+          if (d !== details) d.style.display = 'none';
+        });
+        details.style.display = details.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  </script>
+
+</body>
+</html>
