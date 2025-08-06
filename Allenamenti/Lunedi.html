@@ -63,6 +63,7 @@
     }
     .btn-group {
       display: flex;
+      justify-content: center;
       gap: 10px;
       margin-bottom: 10px;
     }
@@ -81,10 +82,6 @@
     .btn.outline {
       background: white;
       color: #5c039f;
-    }
-    .note {
-      font-weight: bold;
-      margin: 10px 0 4px;
     }
     .note-text {
       font-size: 14px;
@@ -119,6 +116,37 @@
       border-radius: 25px;
       cursor: pointer;
     }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+     }
+
+    thead {
+      background-color: #f4f4f4;
+    }
+
+    th, td {
+      padding: 10px;
+    }
+
+    input[type="number"] {
+      width: 80px;
+      padding: 5px;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #007BFF;
+      box-shadow: 0 0 3px #007BFF;
+    }
+
+  th {
+    font-weight: bold;
+  }
   </style>
 </head>
 <body>
@@ -162,7 +190,6 @@
           <div class="btn-group">
             <button class="btn">Storico pesi 📈</button>
           </div>
-          <div class="note">Serie</div>
           <table>
             <thead><tr><th>#</th><th>Peso (Kg)</th><th>Rip.</th></tr></thead>
             <tbody>
