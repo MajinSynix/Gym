@@ -84,25 +84,40 @@
       font-size: 14px;
       color: #444;
     }
-
+    
     table {
       width: 100%;
-      border-spacing: 10px 8px;
-    }
+      border-collapse: collapse;
+     }
 
-    table th {
+     table th {
       text-align: left;
-      font-size: 13px;
-      color: #888;
+     }
+
+    thead {
+      background-color: #f4f4f4;
     }
 
-    table input {
-      width: 100%;
-      padding: 8px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
+    th, td {
+      padding: 10px;
+    }
+
+    input[type="number"] {
+      width: 80px;
+      padding: 5px;
       text-align: center;
-      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #5c039f;
+      box-shadow: 0 0 3px #5c039f;
+    }
+
+    th {
+      font-weight: bold;
     }
 
     .start-btn {
@@ -120,6 +135,10 @@
   </style>
 </head>
 <body>
+
+  <header>
+    <h1>UPPER FOCUS PETTO</h1>
+  </header>
 
   <!-- Esercizi -->
   <div id="exercise-list">
@@ -155,7 +174,6 @@
           <div class="btn-group">
             <button class="btn outline" style="margin: auto">Storico pesi 📈</button>
           </div>
-          <div class="note" style="margin-top: 12px;">Serie</div>
           <table>
             <thead>
               <tr><th></th><th>Peso (Kg)</th><th>Ripetizioni</th></tr>
