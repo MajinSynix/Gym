@@ -13,6 +13,25 @@
       margin: 0 auto;
     }
 
+    header {
+      background:#5c039f;
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    header img {
+      height: 32px;
+      margin-right: 10px;
+    }
+
+    header h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+
     .exercise {
       background-color: #fff;
       border-radius: 12px;
@@ -85,26 +104,6 @@
       color: #444;
     }
 
-    table {
-      width: 100%;
-      border-spacing: 10px 8px;
-    }
-
-    table th {
-      text-align: left;
-      font-size: 13px;
-      color: #888;
-    }
-
-    table input {
-      width: 100%;
-      padding: 8px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      text-align: center;
-      font-size: 14px;
-    }
-
     .recovery-btn {
       width: 100%;
       background: #5c039f;
@@ -130,9 +129,48 @@
       border-radius: 25px;
       cursor: pointer;
     }
+
+      table {
+      width: 100%;
+      border-collapse: collapse;
+     }
+
+     table th {
+      text-align: left;
+     }
+
+    thead {
+      background-color: #f4f4f4;
+    }
+
+    th, td {
+      padding: 10px;
+    }
+
+    input[type="number"] {
+      width: 80px;
+      padding: 5px;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #5c039f;
+      box-shadow: 0 0 3px #5c039f;
+    }
+
+    th {
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
+
+  <header>
+    <h1>LOWER</h1>
+  </header>  
 
   <!-- Esercizi -->
   <div id="exercise-list">
