@@ -72,65 +72,47 @@
 
   <script>
     const weekDays = [
-      { giorno: "Lunedì", pasti: {
-        colazione: "250ml di latte scremato</br>40g di cereali senza zucchero</br>10g di frutta secca",
-        pranzo: "150g di pane</br>120g di prosciutto magro</br>150g di verdura</br>10g olio o 20g mayo light",
-        cena: "200g di merluzzo</br>10g di parmigiano</br>30g di salsa barbecue zero</br>100g di pane o 250g di patate",
-        spuntini: "20g di Whey</br>10g di frutta secca"
+      { giorno: "Colazione", pasti: {
+        Pasto1: "- 250ml di latte scremato</br>- 30g di cereali</br>- 10g di frutta secca",
+        Pasto2: "- 150g di yogurt greco<br>- 30g di cereali<br>- 10g di frutta secca",
+        Pasto3: "- 50g di pane</br>- 100g di affettato magro</br>- 1 sottiletta light",
       }},
-      { giorno: "Martedì", pasti: {
-        colazione: "250ml di latte scremato</br>40g di cereali senza zucchero</br>10g di frutta secca",
-        pranzo: "100g di pasta o riso</br>25g di pesto light<br>50g di tonno al naturale<br>20g di parmigiano",
-        cena: "200g di merluzzo</br>10g di parmigiano</br>30g di salsa barbecue zero</br>100g di pane o 250g di patate",
-        spuntini: "20g di Whey</br>10g di frutta secca"
+      { giorno: "Pranzo", pasti: {
+        Pasto1: "- 100g di riso o pasta</br>- 2 uova</br>- 50g di affettato magro</br>- 20g di grana",
+        Pasto2: "- 100g di riso o pasta</br>- 50g di tonno al naturale</br>- 25g di pesto leggero</br>- 30g di grana",
+        Pasto3: "- 100g di riso o pasta</br>- 150g di carne bianca</br>- 10g di olio",
+        Pasto4: "- 100g di riso o pasta</br>- 140g di salmne affumicato</br>- 10g di olio",
+        Pasto5: "- 150g di pane</br>- 120g di affettato magro</br>- 20g di mayo light",
+        Pasto6: "- 170g di tortellini di carne</br>- 50g di affettato magro</br>- 5g di olio",
+        Pasto7: "- 200g di gnocchi</br>- 50g di ragù magro</br>- 20g di grana</br>- 5g di olio",
       }},
-      { giorno: "Mercoledì", pasti: {
-        colazione: "250ml di latte scremato</br>40g di cereali senza zucchero</br>10g di frutta secca",
-        pranzo: "100g di pasta o riso</br>25g di pesto light<br>50g di tonno al naturale<br>20g di parmigiano",
-        cena: "250g di filetto di tonno</br>100g di pane o 250g di patate</br>150g di verdura</br>10g di olio o 20g di mayo light",
-        spuntini: "20g di Whey</br>10g di frutta secca"
+      { giorno: "Cena", pasti: {
+        Pasto1: "- 100g di pane o 250g di patate</br>- 200g di carne bianca </br>- 10g di olio o 20g mayo light",
+        Pasto2: "- 100g di pane o 250g di patate</br>- 200g di merluzzo </br>- 20g mayo light</br>- 10g di grana",
+        Pasto3: "- 100g di pane o 250g di patate</br>- 250g di tonno o salmone </br>- 20g mayo light",
       }},
-      { giorno: "Giovedì", pasti: {
-        colazione: "250ml di latte scremato</br>40g di cereali senza zucchero</br>10g di frutta secca",
-        pranzo: "100g di pasta o riso</br>2 uova<br>50g di prosciutto a cubetti<br>20g di parmigiano",
-        cena: "200g di pollo o tacchino</br>100g di pane o 250g di patate</br>150g di verdura</br>10g di olio o 20g di mayo light",
-        spuntini: "20g di Whey</br>10g di frutta secca"
-      }},
-      { giorno: "Venerdì", pasti: {
-        colazione: "250ml di latte scremato</br>40g di cereali senza zucchero</br>10g di frutta secca",
-        pranzo: "100g di pasta o riso</br>2 uova<br>50g di prosciutto a cubetti<br>20g di parmigiano",
-        cena: "200g di pollo o tacchino</br>100g di pane o 250g di patate</br>150g di verdura</br>10g di olio o 20g di mayo light",
-        spuntini: "20g di Whey</br>10g di frutta secca"
-      }},
-      { giorno: "Sabato", pasti: {
-        colazione: "250ml di latte scremato</br>40g di cereali senza zucchero</br>10g di frutta secca",
-        pranzo: "pasta o riso",
-        cena: "Libero",
-        spuntini: "Niente"
-      }},
-      { giorno: "Domenica", pasti: {
-        colazione: "250ml di latte scremato</br>40g di cereali senza zucchero</br>10g di frutta secca",
-        pranzo: "pasta o riso",
-        cena: "Insalata di farro e legumi",
-        spuntini: "20g di Whey</br>10g di frutta secca"
+      { giorno: "Spuntino", pasti: {
+        Pasto1: "300ml di acqua con 20g di whey",
       }},
     ];
 
     const container = document.getElementById('menu-week');
 
     weekDays.forEach((day, i) => {
-      const card = document.createElement('div');
-      card.className = 'day-card';
+const card = document.createElement('div');
+card.className = 'day-card';
 
-      card.innerHTML = `
-        <div class="day-title">${day.giorno}</div>
-        <div class="meal-details">
-          <div class="meal"><strong>Colazione:</strong><p>${day.pasti.colazione}</p></div>
-          <div class="meal"><strong>Pranzo:</strong><p>${day.pasti.pranzo}</p></div>
-          <div class="meal"><strong>Cena:</strong><p>${day.pasti.cena}</p></div>
-          <div class="meal"><strong>Spuntini:</strong><p>${day.pasti.spuntini}</p></div>
-        </div>
-      `;
+const mealsHtml = Object.entries(day.pasti).map(([nomePasto, contenuto]) => {
+  return `<div class="meal"><strong>${nomePasto}:</strong><p>${contenuto}</p></div>`;
+}).join('');
+
+card.innerHTML = `
+  <div class="day-title">${day.giorno}</div>
+  <div class="meal-details" style="display: none;">
+    ${mealsHtml}
+  </div>
+`;
+
 
       const title = card.querySelector('.day-title');
       const details = card.querySelector('.meal-details');
